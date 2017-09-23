@@ -1,0 +1,15 @@
+.idea/
+.project
+.settings/
+.classpath
+bin/
+build/
+logs/
+classes/
+local/
+.gradle/
+*.iml
+.DS_Store
+*.log
+*.swp
+*.pid
