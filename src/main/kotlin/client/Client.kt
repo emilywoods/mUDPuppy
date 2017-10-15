@@ -1,6 +1,7 @@
 package client
 
-import java.io.DataInputStream
+import java.io.BufferedReader
+import java.io.InputStreamReader
 import java.net.DatagramPacket
 import java.net.DatagramSocket
 import java.net.InetAddress
@@ -30,9 +31,9 @@ class Client() : Thread() {
 //        println("Message sent")
 
 
-        val dataInputStream = DataInputStream(System.`in`)
-        print("Client:")
-        val sendStr = dataInputStream.readUTF()
+        val dataInputStream = BufferedReader(InputStreamReader(System.`in`))
+        print("Client: ")
+        val sendStr = dataInputStream.readLine()
         val sendByte = sendStr.toByteArray()
         val sendPacket = DatagramPacket(sendByte, sendByte.size, ipAddress, udpPort)
         socket.send(sendPacket)
