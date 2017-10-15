@@ -74,12 +74,18 @@ http://gtubeit6.blogspot.co.uk/2017/01/advance-java-practical-1.html
 https://www.daniweb.com/programming/software-development/threads/392710/basic-udp-chat-system
 https://www.cs.rutgers.edu/~pxk/417/notes/sockets/udp.html
 
+Raw Socket:
+https://github.com/mirsamantajbakhsh/RawSocket/blob/master/src/rawsocket/RawSocket.java
+
 TCP:
 http://makemobiapps.blogspot.co.uk/p/multiple-client-server-chat-programming.html
+https://github.com/antonyalkmim/CalculatorKT/tree/master/src (kotlin)
 
 Bitta knowledge:
 https://help.papertrailapp.com/kb/configuration/troubleshooting-remote-syslog-reachability#message-length
 
-## What is UDP
 
-
+1. Create UDP chat app
+2. Handle Threading/Async
+2. Refactor it
+3. Add ethernat frame, whatever is in geckoboard's app
