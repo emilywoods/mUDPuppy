@@ -8,51 +8,31 @@ import java.net.InetAddress
 
 class Client() : Thread() {
     val bufferSize = 1024
-    val udpPort = 4320
+    val serverPort = 4320
     val socket = DatagramSocket()
     val ipAddress = InetAddress.getLocalHost()
     val receiveBytes = ByteArray(bufferSize)
 
     fun client() {
-        while (true) {
-            socket.connect(ipAddress, udpPort)
-            send()
-            receive()
-        }
+        socket.connect(ipAddress, serverPort)
+        sendPacket()
     }
 
-    private fun send() {
-//        val dataInputStream = Scanner(System.`in`)
-//        println("Client:")
-//        val sendString = dataInputStream.nextLine()
-//        var sendByte  = sendString.toByteArray()
-//        val sendPacket = DatagramPacket(sendByte, sendByte.size, ipAddress, udpPort)
-//        socket.send(sendPacket)
-//        println("Message sent")
-
-
+    private fun sendPacket() {
         val dataInputStream = BufferedReader(InputStreamReader(System.`in`))
         print("Client: ")
         val sendStr = dataInputStream.readLine()
         val sendByte = sendStr.toByteArray()
-        val sendPacket = DatagramPacket(sendByte, sendByte.size, ipAddress, udpPort)
+        val sendPacket = DatagramPacket(sendByte, sendByte.size, ipAddress, serverPort)
         socket.send(sendPacket)
-        println("Message sent")
-
+        socket.disconnect()
     }
 
-    private fun receive() {
-//        val receivePacket = DatagramPacket(receiveBytes, receiveBytes.size)
-//        socket.receive(receivePacket)
-//        println("Message received")
-//        val receiveStr = receivePacket.data.toString()
-//        println("Server:" + receiveStr)
-
+    fun receivePacket() {
         val receivePacket = DatagramPacket(receiveBytes, receiveBytes.size)
         socket.receive(receivePacket)
-        val receiveStr = String(receivePacket.getData())
-        val receiveStrTrim = receiveStr.trim()
-        System.out.println("Server:"+ receiveStrTrim)
+        val receiveStr = String(receivePacket.data)
+        val receiveStrTrim = receiveStr.trim { it <= ' ' }
+        println("Message from server:" + receiveStrTrim)
     }
-
 }
