@@ -1,17 +1,20 @@
 package client
 
-import java.io.DataInputStream
 import java.net.DatagramPacket
 import java.net.DatagramSocket
 import java.net.InetAddress
 import java.util.*
 
-class Client{
+class Client() : Thread() {
     val bufferSize = 1024
     val udpPort = 4320
     val socket = DatagramSocket()
     val ipAddress = InetAddress.getLocalHost()
     val packet = ByteArray(bufferSize)
+
+
+    val sendByte =  byteArrayOf()[bufferSize]
+    val receiveByte =  byteArrayOf()[bufferSize]
 
     fun client() {
         while (true) {
@@ -29,6 +32,8 @@ class Client{
         val sendPacket = DatagramPacket(sendByte, sendByte.size, ipAddress, udpPort)
         socket.send(sendPacket)
         println("Message sent")
+
+
     }
 
     private fun receive() {
