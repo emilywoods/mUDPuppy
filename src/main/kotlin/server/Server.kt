@@ -9,12 +9,11 @@ import java.net.InetAddress
 
 class Server @Autowired constructor(
         val userComms: UserCommunication,
-        val udpDatagram: UdpDatagram
+        val udpDatagram: UdpDatagram,
+        val serverSocket: DatagramSocket
 ): Thread() {
 
     val bufferSize = 1024
-    val serverPort = 4320
-    val serverSocket = DatagramSocket(serverPort)
     val packet = ByteArray(bufferSize)
 
     fun serve() {

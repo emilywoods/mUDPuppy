@@ -10,11 +10,12 @@ fun main(args: Array<String>) {
         val userComms = UserCommunication()
         val ipAddress: InetAddress = InetAddress.getLocalHost()
         val udpDatagram = UdpDatagram()
+        val serverPort = 4320
+        val serverSocket = DatagramSocket(serverPort)
 
         while (true) {
                 val client = Client(datagramSocket, userComms, ipAddress, udpDatagram)
-                //into client inject: DatagramSocket
-                val server = Server(userComms, udpDatagram)
+                val server = Server(userComms, udpDatagram, serverSocket)
                 client.start()
                 server.start()
                 client.client()
