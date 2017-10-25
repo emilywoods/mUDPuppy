@@ -1,12 +1,14 @@
 package server
 
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Component
 import utils.UdpDatagram
 import utils.UserCommunication
 import java.net.DatagramPacket
 import java.net.DatagramSocket
 import java.net.InetAddress
 
+@Component
 class Server @Autowired constructor(
         val userComms: UserCommunication,
         val udpDatagram: UdpDatagram,

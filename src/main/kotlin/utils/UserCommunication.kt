@@ -1,8 +1,10 @@
 package utils
 
+import org.springframework.stereotype.Component
 import java.io.BufferedReader
 import java.io.InputStreamReader
 
+@Component
 class UserCommunication {
 
     fun getUserInputStream(): BufferedReader {

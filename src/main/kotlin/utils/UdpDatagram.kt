@@ -1,8 +1,10 @@
 package utils
 
+import org.springframework.stereotype.Component
 import java.net.DatagramPacket
 import java.net.InetAddress
 
+@Component
 class UdpDatagram {
 
     fun constructPacketToReceive(receiveBytes: ByteArray, size: Int): DatagramPacket {
